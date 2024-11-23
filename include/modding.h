@@ -31,4 +31,6 @@ typedef enum {
     RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK = 2
 } RecompAimingOverideMode;
 
+RECOMP_IMPORT("*", int recomp_printf(const char* fmt, ...));
+
 #endif

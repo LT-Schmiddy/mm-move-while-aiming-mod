@@ -6,16 +6,19 @@ void func_8083EA44(Player* this, f32 arg1);
 
 // RECOMP_DECLARE_EVENT(recomp_disable_left_stick_aiming(bool* should));
 // Patches a function in the base game that's used to check if the player should quickspin.
-RECOMP_CALLBACK("*", recomp_before_first_person_aiming_update_event) \
-void disable_left_stick_callback(PlayState* play, Player* this, bool in_free_look, RecompAimingOverideMode* aiming_override) { 
-    bool should = play->unk_1887C == 0 // Prevents movement in shooting gallery.
+
+bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) {
+     return play->unk_1887C == 0 // Prevents movement in shooting gallery.
         && this->rideActor == NULL // Prevents movement on horseback.
         && (
             in_free_look 
             || this->currentMask != PLAYER_MASK_ZORA
         );
+}
 
-    if (should) {
+RECOMP_CALLBACK("*", recomp_before_first_person_aiming_update_event) \
+void disable_left_stick_callback(PlayState* play, Player* this, bool in_free_look, RecompAimingOverideMode* aiming_override) { 
+   if (should_move_while_aiming(play, this, in_free_look)) {
         // *aiming_override = RECOMP_AIMINIG_OVERRIDE_DISABLE_LEFT_STICK;
         *aiming_override = RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK;
     }
@@ -23,6 +26,9 @@ void disable_left_stick_callback(PlayState* play, Player* this, bool in_free_loo
 
 RECOMP_CALLBACK("*", recomp_after_first_person_aiming_update_event) \
 void recomp_on_aiming_callback(PlayState* play, Player* this, bool in_free_look) {
+    if (!should_move_while_aiming(play, this, in_free_look)) {
+        return;
+    }
 
     f32 movementSpeed = 8.25f; // account for mask
     if (this->currentMask == PLAYER_MASK_BUNNY) {
