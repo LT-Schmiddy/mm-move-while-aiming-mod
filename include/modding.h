@@ -24,4 +24,11 @@
 
 #define RECOMP_CALLBACK(mod, event) __attribute__((section(".recomp_callback." mod ":" #event)))
 
+// Recomp Type Definitions:
+typedef enum {
+    RECOMP_AIMINIG_OVERRIDE_OFF = 0,
+    RECOMP_AIMINIG_OVERRIDE_DISABLE_LEFT_STICK = 1,
+    RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK = 2
+} RecompAimingOverideMode;
+
 #endif
