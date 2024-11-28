@@ -60,8 +60,6 @@ void recomp_on_aiming_callback(PlayState* play, Player* this, bool in_free_look)
         distance *= 2.0f;
     }
     
-    func_8083EA44(this, distance / 4.5f);
-
     if (
             !(this->stateFlags1 & PLAYER_STATE1_800) 
             && (this->actor.bgCheckFlags & BGCHECKFLAG_PLAYER_WALL_INTERACT) 
@@ -71,7 +69,7 @@ void recomp_on_aiming_callback(PlayState* play, Player* this, bool in_free_look)
         s32 wall_check = func_8083D860(play, this);
         return;
     }
-
+    func_8083EA44(this, distance / 4.5f);
     this->actor.world.pos.x += (relX2 * movementSpeed) + this->actor.colChkInfo.displacement.x;
     this->actor.world.pos.z += (relY2 * movementSpeed) + this->actor.colChkInfo.displacement.z;
 }
