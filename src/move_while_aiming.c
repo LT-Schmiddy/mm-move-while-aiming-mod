@@ -65,7 +65,7 @@ void recomp_on_aiming_callback(PlayState* play, Player* this, bool in_free_look)
     if (
             !(this->stateFlags1 & PLAYER_STATE1_800) 
             && (this->actor.bgCheckFlags & BGCHECKFLAG_PLAYER_WALL_INTERACT) 
-            && (sPlayerShapeYawToTouchedWall < 0x2500)
+            && (sPlayerShapeYawToTouchedWall < 0x3000)
             && relY >= 0.0f
         ) {
         s32 wall_check = func_8083D860(play, this);
