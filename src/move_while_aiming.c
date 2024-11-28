@@ -1,8 +1,11 @@
 #include "modding.h"
 #include "global.h"
 
+
+extern s32 sPlayerShapeYawToTouchedWall;
 // Function for footstep audio.
 void func_8083EA44(Player* this, f32 arg1);
+s32 func_8083D860(PlayState* play, Player* this);
 
 // RECOMP_DECLARE_EVENT(recomp_disable_left_stick_aiming(bool* should));
 // Patches a function in the base game that's used to check if the player should quickspin.
@@ -56,8 +59,18 @@ void recomp_on_aiming_callback(PlayState* play, Player* this, bool in_free_look)
     if (this->currentMask == PLAYER_MASK_DEKU) {
         distance *= 2.0f;
     }
-
+    
     func_8083EA44(this, distance / 4.5f);
+
+    if (
+            !(this->stateFlags1 & PLAYER_STATE1_800) 
+            && (this->actor.bgCheckFlags & BGCHECKFLAG_PLAYER_WALL_INTERACT) 
+            && (sPlayerShapeYawToTouchedWall < 0x2500)
+            && relY >= 0.0f
+        ) {
+        s32 wall_check = func_8083D860(play, this);
+        return;
+    }
 
     this->actor.world.pos.x += (relX2 * movementSpeed) + this->actor.colChkInfo.displacement.x;
     this->actor.world.pos.z += (relY2 * movementSpeed) + this->actor.colChkInfo.displacement.z;

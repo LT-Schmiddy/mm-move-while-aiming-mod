@@ -1,12 +1,13 @@
-# Majora's Mask: Recompiled Mod Template
+# Majora's Mask: Movement While Aiming
 
-This is an example mod for Majora's Mask: Recompiled that can be used as a template for creating mods. It has a basic build system, headers, sample code, and a mod config toml.
+This mod adds the ability to move with the left stick while aiming in first person. It's partially based on 2Ship's implementation, but with a few improvements. In particular, this version disables movement (and re-enables left-stick aiming) in a few cases where it would cause problems. More specifically, during:
 
-### Writing mods
-See [this document](https://hackmd.io/fMDiGEJ9TBSjomuZZOgzNg) for an explanation of the modding framework, including how to write function patches and perform interop between different mods.
+* The Shooting Galleries and Cremia's milk run, since those mini-games aren't meant for the player to move, and forcing the player to aim with right-stick and shoot with B is uncomfortable.
+* Riding Epona, for similar reasons (although, the ability to control Epona while aiming could probably be added).
+* While aiming Zora boomerangs. You have to hold B to ready them, so you can't really aim with right-stick at the same time. Additionally, that isn't actually a first-person view and there's no animation playing while the player moves, so it looks awkward (especially if you use a mod to disable the black bars).
 
 ### Tools
-You'll need to install `clang` and `make` to build this template.
+You'll need to install `clang` and `make` to build this project.
 * On Windows, using [chocolatey](https://chocolatey.org/) to install both is recommended. The packages are `llvm` and `make` respectively.
   * The LLVM 19.1.0 [llvm-project](https://github.com/llvm/llvm-project) release binary, which is also what chocolatey provides, does not support MIPS correctly. The solution is to install 18.1.8 instead, which can be done in chocolatey by specifying `--version 18.1.8` or by downloading the 18.1.8 release directly.
 * On Linux, these can both be installed using your distro's package manager.
