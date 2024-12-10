@@ -7,16 +7,19 @@ extern s32 sPlayerShapeYawToTouchedWall;
 void func_8083EA44(Player* this, f32 arg1);
 s32 func_8083D860(PlayState* play, Player* this);
 
-// RECOMP_DECLARE_EVENT(recomp_disable_left_stick_aiming(bool* should));
-// Patches a function in the base game that's used to check if the player should quickspin.
+// Player Action Functions:
+void Player_Action_80(Player* this, PlayState* play); // Boat Cruise
 
+// My Methods
 bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) {
      return play->unk_1887C == 0 // Prevents movement in shooting gallery.
         && this->rideActor == NULL // Prevents movement on horseback.
         && (
             in_free_look 
             || this->currentMask != PLAYER_MASK_ZORA
-        );
+        ) // Prevents movement with zora boomerangs
+        && this->actionFunc != Player_Action_80 // Disables movement during boat cruise.
+        ;
 }
 
 RECOMP_CALLBACK("*", recomp_before_first_person_aiming_update_event) \
