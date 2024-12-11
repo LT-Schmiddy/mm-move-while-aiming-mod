@@ -1,0 +1,4 @@
+void Player_Action_43(Player* this, PlayState* play) // Free Look, Hookshot, Bow, etc.
+void Player_Action_52(Player* this, PlayState* play) // Aiming on Epona.
+void Player_Action_80(Player* this, PlayState* play) // Boat Cruise
+void Player_Action_81(Player* this, PlayState* play) // Shooting Gallery, Cremia's Milk Run
