@@ -8,17 +8,16 @@ void func_8083EA44(Player* this, f32 arg1);
 s32 func_8083D860(PlayState* play, Player* this);
 
 // Player Action Functions:
-void Player_Action_80(Player* this, PlayState* play); // Boat Cruise
+void Player_Action_43(Player* this, PlayState* play); // Free Look, Hookshot, Bow, etc.
 
 // My Methods
 bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) {
-     return play->unk_1887C == 0 // Prevents movement in shooting gallery.
-        && this->rideActor == NULL // Prevents movement on horseback.
+    
+    return this->actionFunc == Player_Action_43 // Aiming should now only be allowed in non-minigame gameplay, and not riding epona.
         && (
             in_free_look 
             || this->currentMask != PLAYER_MASK_ZORA
         ) // Prevents movement with zora boomerangs
-        && this->actionFunc != Player_Action_80 // Disables movement during boat cruise.
         ;
 }
 
