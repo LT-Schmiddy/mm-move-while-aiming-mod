@@ -7,7 +7,7 @@ This mod adds the ability to move with the left stick while aiming in first pers
 * While aiming Zora boomerangs. You have to hold B to ready them, so you can't really aim with right-stick at the same time. Additionally, that isn't actually a first-person view and there's no animation playing while the player moves, so it looks awkward (especially if you use a mod to disable the black bars).
 
 ### Tools
-You'll need to install `clang` and `make` to build this project.
+You'll need to install `clang`, `make`, and the latest version of Python to build this template.
 * On Windows, using [chocolatey](https://chocolatey.org/) to install both is recommended. The packages are `llvm` and `make` respectively.
   * The LLVM 19.1.0 [llvm-project](https://github.com/llvm/llvm-project) release binary, which is also what chocolatey provides, does not support MIPS correctly. The solution is to install 18.1.8 instead, which can be done in chocolatey by specifying `--version 18.1.8` or by downloading the 18.1.8 release directly.
 * On Linux, these can both be installed using your distro's package manager.
@@ -15,11 +15,15 @@ You'll need to install `clang` and `make` to build this project.
 
 On Linux and MacOS, you'll need to also ensure that you have the `zip` utility installed.
 
-You'll also need to build [N64Recomp](https://github.com/N64Recomp/N64Recomp) for the `RecompModTool` utility.
-
 ### Building
-* First, run `make` (with an optional job count) to build the mod code itself.
-* Next, run the `RecompModTool` utility with `mod.toml` as the first argument and the build dir (`build` in the case of this template) as the second argument.
+
+If you have Python, simply running the `build_mod.py` script should take care of everything.
+
+If not, you can follow the instructions below:
+
+* First, you need to build the [N64Recomp](https://github.com/N64Recomp/N64Recomp) library (included) for the `RecompModTool` utility.
+* Second, run `make` (with an optional job count) to build the mod code itself.
+* Third, run the `RecompModTool` utility with `mod.toml` as the first argument and the build dir (`build` in the case of this template) as the second argument.
   * This will produce your mod's `.nrm` file in the build folder.
 * Finally, compile your mod offline.
   * **This part is temporary and only needed while the recomp mod runtime doesn't have LuaJIT recompilation implemented**
