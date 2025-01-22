@@ -72,5 +72,5 @@ if compiler_run.returncode != 0:
 # Copying files for debugging:
 os.makedirs(runtime_mods_dir, exist_ok=True)
 shutil.copy(build_nrm_file, runtime_nrm_file)
-shutil.copy(build_dll_file, runtime_dll_file)
-shutil.copy(build_pdb_file, runtime_pdb_file)
+# shutil.copy(build_dll_file, runtime_dll_file)
+# shutil.copy(build_pdb_file, runtime_pdb_file)
