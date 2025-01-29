@@ -1,19 +1,21 @@
 #include "modding.h"
 #include "global.h"
 
+#include "macros.h"
 
 extern s32 sPlayerShapeYawToTouchedWall;
+extern Input* sPlayerControlInput;
 // Function for footstep audio.
 void func_8083EA44(Player* this, f32 arg1);
 s32 func_8083D860(PlayState* play, Player* this);
 
 // Player Action Functions:
 void Player_Action_43(Player* this, PlayState* play); // Free Look, Hookshot, Bow, etc.
+void Player_Action_52(Player* this, PlayState* play); //Riding Epona
 
-// My Methods
+// My Methods:
 bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) {
-    
-    return this->actionFunc == Player_Action_43 // Aiming should now only be allowed in non-minigame gameplay, and not riding epona.
+    return (this->actionFunc == Player_Action_43) // Aiming should now only be allowed in non-minigame gameplay, and not riding epona.
         && (
             in_free_look 
             || this->currentMask != PLAYER_MASK_ZORA
@@ -21,10 +23,13 @@ bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) 
         ;
 }
 
+// RECOMP_PATCH s32 func_80830F9C(PlayState* play) {
+//     return (play->unk_1887C > 0) && (CHECK_BTN_ALL(sPlayerControlInput->press.button, BTN_B) || CHECK_BTN_ALL(sPlayerControlInput->press.button, BTN_R));
+// }
+
 RECOMP_CALLBACK("*", recomp_before_first_person_aiming_update_event) \
 void disable_left_stick_callback(PlayState* play, Player* this, bool in_free_look, RecompAimingOverideMode* aiming_override) { 
-   if (should_move_while_aiming(play, this, in_free_look)) {
-        // *aiming_override = RECOMP_AIMINIG_OVERRIDE_DISABLE_LEFT_STICK;
+    if (should_move_while_aiming(play, this, in_free_look) || this->actionFunc == Player_Action_52) {
         *aiming_override = RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK;
     }
 }

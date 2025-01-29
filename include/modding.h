@@ -24,6 +24,10 @@
 
 #define RECOMP_CALLBACK(mod, event) __attribute__((section(".recomp_callback." mod ":" #event)))
 
+#define RECOMP_HOOK(func) __attribute__((section(".recomp_hook." func)))
+
+#define RECOMP_HOOK_RETURN(func) __attribute__((section(".recomp_hook_return." func)))
+
 // Recomp Type Definitions:
 typedef enum {
     RECOMP_AIMINIG_OVERRIDE_OFF = 0,
