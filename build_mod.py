@@ -1,15 +1,16 @@
 import pathlib, subprocess, os, shutil, tomllib
 import build_n64recomp_tools as bnt
 
-mod_data = tomllib.loads(pathlib.Path("mod.toml").read_text())["manifest"]
+mod_data = tomllib.loads(pathlib.Path("mod.toml").read_text())
+mod_manifest_data = mod_data["manifest"]
 # print(mod_data)
 build_dir = pathlib.Path(__file__).parent.joinpath(f"build")
-build_nrm_file = build_dir.joinpath(f"{mod_data['id']}-{mod_data['version']}.nrm")
+build_nrm_file = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 build_dll_file = build_nrm_file.with_suffix(".dll")
 build_pdb_file = build_nrm_file.with_suffix(".pdb")
 
 runtime_mods_dir = pathlib.Path(__file__).parent.joinpath("runtime/mods")
-runtime_nrm_file = runtime_mods_dir.joinpath(f"{mod_data['id']}-{mod_data['version']}.nrm")
+runtime_nrm_file = runtime_mods_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 runtime_dll_file = runtime_nrm_file.with_suffix(".dll")
 runtime_pdb_file = runtime_nrm_file.with_suffix(".pdb")
 
@@ -72,5 +73,5 @@ if compiler_run.returncode != 0:
 # Copying files for debugging:
 os.makedirs(runtime_mods_dir, exist_ok=True)
 shutil.copy(build_nrm_file, runtime_nrm_file)
-# shutil.copy(build_dll_file, runtime_dll_file)
-# shutil.copy(build_pdb_file, runtime_pdb_file)
+shutil.copy(build_dll_file, runtime_dll_file)
+shutil.copy(build_pdb_file, runtime_pdb_file)
