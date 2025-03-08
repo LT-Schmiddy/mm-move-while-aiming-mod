@@ -1,0 +1,7 @@
+{
+    "name": "mm_move_while_aiming",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/LT-Schmiddy/mm-move-while-aiming-mod",
+    "description": "Allows Link to move with the analog while aiming in first-person.",
+    "dependencies": []
+}
