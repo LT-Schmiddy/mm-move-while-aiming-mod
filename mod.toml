@@ -5,10 +5,10 @@
 
 # Unique ID of this mod. Pick something long enough that it'll never be the same as any other mod.
 # The name displayed in the mod management menu is separate from this so this doesn't need to be human readable.
-id = "move_while_aiming"
+id = "mm_move_while_aiming"
 
 # Version of this mod.
-version = "0.1.4"
+version = "1.0.0"
 
 # Authors of this mod.
 authors = [ "LT_Schmiddy" ]
@@ -61,8 +61,10 @@ func_reference_syms_file = "Zelda64RecompSyms/mm.us.rev1.syms.toml"
 data_reference_syms_files = [ "Zelda64RecompSyms/mm.us.rev1.datasyms.toml", "Zelda64RecompSyms/mm.us.rev1.datasyms_static.toml" ]
 
 # Output mod filename.
-mod_filename = "move_while_aiming_0.1.4"
+mod_filename = "move_while_aiming_1.0.0"
 
 # Additional files to include in the mod.
-additional_files = [ ]
+additional_files = [
+    "thumb.dds"
+]
 
