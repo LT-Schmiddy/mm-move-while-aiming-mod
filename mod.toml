@@ -61,7 +61,7 @@ func_reference_syms_file = "Zelda64RecompSyms/mm.us.rev1.syms.toml"
 data_reference_syms_files = [ "Zelda64RecompSyms/mm.us.rev1.datasyms.toml", "Zelda64RecompSyms/mm.us.rev1.datasyms_static.toml" ]
 
 # Output mod filename.
-mod_filename = "move_while_aiming_1.0.0"
+mod_filename = "mm_move_while_aiming_1.0.0"
 
 # Additional files to include in the mod.
 additional_files = [
