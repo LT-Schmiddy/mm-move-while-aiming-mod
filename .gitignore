@@ -11,6 +11,7 @@
 patches.map
 build/
 runtime/
+assets_extracted/
 .vscode/launch.json
 .vscode/settings.json
 .vscode/tasks.json
