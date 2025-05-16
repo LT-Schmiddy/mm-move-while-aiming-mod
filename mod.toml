@@ -76,8 +76,8 @@ description = """
 The Bow can be optionally be fired with the R button, overriding shielding behavior.
 Off - Feature Disabled
 First Person - The Bow is only fired using R when in first person aiming.
-Aiming - The Bow is only fired using R when it is being aimed, through first-person or lock-on.
-Holding - The Bow can be fired with R as long as it is being held. Put it away or draw your sword to resume shielding behavior.
+Aiming - The Bow is only fired using R when it is being aimed, through first-person or lock-on. 
+Holding - The Bow can be fired with R as long as it is being held. Put it away (or draw your sword) to resume shielding behavior.
 """
 type = "Enum"
 options = ["Off", "First Person", "Aiming", "Holding"]
@@ -91,7 +91,7 @@ The Hookshot can be optionally be fired with the R button.
 Off - Feature Disabled
 First Person - The Hookshot is only fired using R when in first person aiming.
 Aiming - The Hookshot is only fired using R when it is being aimed, through first-person or lock-on.
-Holding - The Hookshot can be fired with R as long as it is being held. Put it away or draw your sword to resume shielding behavior.
+Holding - The Hookshot can be fired with R as long as it is being held. Put it away (or draw your sword) to resume shielding behavior.
 """
 type = "Enum"
 options = ["Off", "First Person", "Aiming", "Holding"]
