@@ -69,3 +69,24 @@ additional_files = [
     "thumb.dds"
 ]
 
+[[manifest.config_options]]
+id = "bow-fire-with-r"
+name = "Fire the Bow with R"
+description = """
+When enabled, the Bow can be fired with the R button.
+You can also select whether this behavior is applied when Link is aiming the Bow, or merely holding it out.
+"""
+type = "Enum"
+options = ["Off", "First Person", "Aiming", "Holding"]
+default = "First Person"
+
+[[manifest.config_options]]
+id = "hookshot-fire-with-r"
+name = "Fire the Hookshot with R"
+description = """
+When enabled, the Hookshot can be fired with the R button.
+You can also select whether this behavior is applied when Link is aiming the Hookshot, or merely holding it out.
+"""
+type = "Enum"
+options = ["Off", "First Person", "Aiming", "Holding"]
+default = "First Person"
