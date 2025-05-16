@@ -18,8 +18,16 @@ bool should_move_while_aiming(PlayState* play, Player* this, bool in_free_look) 
     return (this->actionFunc == Player_Action_43) // Aiming should now only be allowed in non-minigame gameplay, and not riding epona.
         && (
             in_free_look 
-            || this->currentMask != PLAYER_MASK_ZORA
-        ) // Prevents movement with zora boomerangs
+            || ( // If it can hold one of these, let it move.
+                (this->heldItemAction == PLAYER_IA_BOW) 
+                || (this->heldItemAction == PLAYER_IA_BOW_FIRE) 
+                || (this->heldItemAction == PLAYER_IA_BOW_ICE) 
+                || (this->heldItemAction == PLAYER_IA_BOW_LIGHT) 
+                || (this->heldItemAction == PLAYER_IA_HOOKSHOT)
+            ) 
+            || (this->transformation != PLAYER_FORM_ZORA)// Prevents movement with zora boomerangs
+            // || (this->heldItemAction != PLAYER_IA_11)// Prevents movement with zora boomerangs
+        ) 
         ;
 }
 
