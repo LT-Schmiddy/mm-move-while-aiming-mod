@@ -28,13 +28,4 @@
 
 #define RECOMP_HOOK_RETURN(func) __attribute__((section(".recomp_hook_return." func)))
 
-// Recomp Type Definitions:
-typedef enum {
-    RECOMP_AIMINIG_OVERRIDE_OFF = 0,
-    RECOMP_AIMINIG_OVERRIDE_DISABLE_LEFT_STICK = 1,
-    RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK = 2
-} RecompAimingOverideMode;
-
-RECOMP_IMPORT("*", int recomp_printf(const char* fmt, ...));
-
 #endif
