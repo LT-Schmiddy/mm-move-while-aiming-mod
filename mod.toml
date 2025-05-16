@@ -73,8 +73,11 @@ additional_files = [
 id = "bow-fire-with-r"
 name = "Fire the Bow with R"
 description = """
-When enabled, the Bow can be fired with the R button.
-You can also select whether this behavior is applied when Link is aiming the Bow, or merely holding it out.
+The Bow can be optionally be fired with the R button, overriding shielding behavior.
+Off - Feature Disabled
+First Person - The Bow is only fired using R when in first person aiming.
+Aiming - The Bow is only fired using R when it is being aimed, through first-person or lock-on.
+Holding - The Bow can be fired with R as long as it is being held. Put it away or draw your sword to resume shielding behavior.
 """
 type = "Enum"
 options = ["Off", "First Person", "Aiming", "Holding"]
@@ -84,8 +87,11 @@ default = "First Person"
 id = "hookshot-fire-with-r"
 name = "Fire the Hookshot with R"
 description = """
-When enabled, the Hookshot can be fired with the R button.
-You can also select whether this behavior is applied when Link is aiming the Hookshot, or merely holding it out.
+The Hookshot can be optionally be fired with the R button.
+Off - Feature Disabled
+First Person - The Hookshot is only fired using R when in first person aiming.
+Aiming - The Hookshot is only fired using R when it is being aimed, through first-person or lock-on.
+Holding - The Hookshot can be fired with R as long as it is being held. Put it away or draw your sword to resume shielding behavior.
 """
 type = "Enum"
 options = ["Off", "First Person", "Aiming", "Holding"]
