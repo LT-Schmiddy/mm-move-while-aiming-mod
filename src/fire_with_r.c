@@ -30,32 +30,62 @@ static bool special_r_held = false;
 
 s32 Player_UpperAction_7(Player* thisx, PlayState* play);
 s32 Player_UpperAction_8(Player* thisx, PlayState* play);
+void Player_Action_43(Player* this, PlayState* play); // Free Look, Hookshot, Bow, etc.
+void Player_Action_52(Player* this, PlayState* play); //Riding Epona
+void Player_Action_81(Player* this, PlayState* play); // Shooting Gallery, Cremia's Milk Run
 
 bool Player_isHoldingBow(Player* this) {
-    return (this->heldItemAction == PLAYER_IA_BOW || 
-             this->heldItemAction == PLAYER_IA_BOW_FIRE || 
-             this->heldItemAction == PLAYER_IA_BOW_ICE || 
-             this->heldItemAction == PLAYER_IA_BOW_LIGHT);
+    return (
+        this->heldItemAction == PLAYER_IA_BOW
+        || this->heldItemAction == PLAYER_IA_BOW_FIRE
+        || this->heldItemAction == PLAYER_IA_BOW_ICE
+        || this->heldItemAction == PLAYER_IA_BOW_LIGHT
+        || this->actionFunc == Player_Action_81 // For Bow Mini-Games
+        );
 }
 
 bool Player_IsAimingBow(Player* this, PlayState* play) {
     return (Player_isHoldingBow(this)) &&
-             (this->upperActionFunc == Player_UpperAction_8 ||
-              this->upperActionFunc == Player_UpperAction_7);
+        (
+            this->upperActionFunc == Player_UpperAction_8
+            || this->upperActionFunc == Player_UpperAction_7
+        );
 }
 
 bool Player_IsAimingHookshot(Player* this, PlayState* play) {
     return (Player_IsHoldingHookshot(this)) &&
-             (this->upperActionFunc == Player_UpperAction_8 ||
-              this->upperActionFunc == Player_UpperAction_7);
+        (
+            this->upperActionFunc == Player_UpperAction_8
+            || this->upperActionFunc == Player_UpperAction_7
+        );
+}
+
+bool Player_IsFirstPersonBow(Player* this, PlayState* play) {
+    return (Player_isHoldingBow(this)) &&
+        (
+            this->actionFunc == Player_Action_43
+            || this->actionFunc == Player_Action_52
+            || this->actionFunc == Player_Action_81
+        );
+}
+
+bool Player_IsFirstPersonHookshot(Player* this, PlayState* play) {
+    return (Player_IsHoldingHookshot(this)) &&
+        (
+            this->actionFunc == Player_Action_43
+            || this->actionFunc == Player_Action_52
+            || this->actionFunc == Player_Action_81
+        );
 }
 
 bool ShouldAllowRFiring(Player* this, PlayState* play) {
     RFiringBehavior bow_r = recomp_get_config_u32("bow-fire-with-r");
     RFiringBehavior hookshot_r = recomp_get_config_u32("hookshot-fire-with-r");
     return (
-        (bow_r == AIMING && Player_IsAimingBow(this, play))
+        (bow_r == FIRST_PERSON && Player_IsFirstPersonBow(this, play))
+        || (bow_r == AIMING && Player_IsAimingBow(this, play))
         || (bow_r == HOLDING && Player_isHoldingBow(this))
+        || (hookshot_r == FIRST_PERSON && Player_IsFirstPersonHookshot(this, play))
         || (hookshot_r == AIMING && Player_IsAimingHookshot(this, play))
         || (hookshot_r == HOLDING && Player_IsHoldingHookshot(this))
     );
