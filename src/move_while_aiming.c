@@ -3,6 +3,13 @@
 
 #include "macros.h"
 
+// Recomp Type Definitions:
+typedef enum {
+    RECOMP_AIMINIG_OVERRIDE_OFF = 0,
+    RECOMP_AIMINIG_OVERRIDE_DISABLE_LEFT_STICK = 1,
+    RECOMP_AIMINIG_OVERRIDE_FORCE_RIGHT_STICK = 2
+} RecompAimingOverideMode;
+
 extern s32 sPlayerShapeYawToTouchedWall;
 extern Input* sPlayerControlInput;
 // Function for footstep audio.
