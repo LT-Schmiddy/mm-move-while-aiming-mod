@@ -1,12 +1,18 @@
-# Majora's Mask: Movement While Aiming
+# Move While Aiming
 
-This mod adds the ability to move with the left stick while aiming in first person. It's partially based on 2Ship's implementation, but with a few improvements. In particular, this version disables movement (and re-enables left-stick aiming) in a few cases where it would cause problems. More specifically, during:
+Allows Link to move with the analog while aiming in first-person.
+While active, the N64 analog input (left stick by default) will be used to move Link.
+Aiming will be handled by the right-stick, overriding it's usual behavior.
 
-* The Shooting Galleries and Cremia's milk run, since those mini-games aren't meant for the player to move, and forcing the player to aim with right-stick and shoot with B is uncomfortable.
-* Riding Epona, for similar reasons (although, the ability to control Epona while aiming could probably be added).
-* While aiming Zora boomerangs. You have to hold B to ready them, so you can't really aim with right-stick at the same time. Additionally, that isn't actually a first-person view and there's no animation playing while the player moves, so it looks awkward (especially if you use a mod to disable the black bars).
+Does not apply to shooting galleries, or Mini-games where Link should not be able to move around.
 
-### Tools
+Also allows Link to control Epona while aiming with the bow.
+
+This mod now also includes the optional ability for Link to fire the Bow and Hookshot with the R button,
+a valuable QoL improvement for when both thumbs are needed for simultaneous aiming and firing. This feature
+Will come to the Zora Boomerangs and Deku Bubble in a future version.
+
+## Tools
 You'll need to install `clang`, `make`, and the latest version of Python to build this template.
 * On Windows, using [chocolatey](https://chocolatey.org/) to install both is recommended. The packages are `llvm` and `make` respectively.
   * The LLVM 19.1.0 [llvm-project](https://github.com/llvm/llvm-project) release binary, which is also what chocolatey provides, does not support MIPS correctly. The solution is to install 18.1.8 instead, which can be done in chocolatey by specifying `--version 18.1.8` or by downloading the 18.1.8 release directly.
@@ -15,7 +21,7 @@ You'll need to install `clang`, `make`, and the latest version of Python to buil
 
 On Linux and MacOS, you'll need to also ensure that you have the `zip` utility installed.
 
-### Building
+## Building
 
 If you have Python, simply running the `build_mod.py` script should take care of everything.
 

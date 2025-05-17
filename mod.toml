@@ -8,7 +8,7 @@
 id = "mm_move_while_aiming"
 
 # Version of this mod.
-version = "1.0.2"
+version = "2.0.0"
 
 # Authors of this mod.
 authors = [ "LT_Schmiddy" ]
@@ -19,17 +19,17 @@ display_name = "Move While Aiming"
 
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
-Allows Link to move with the analog while aiming in first-person. 
+Allows Link to move with the analog stick while aiming in first-person. 
 While active, the N64 analog input (left stick by default) will be used to move Link.
 Aiming will be handled by the right-stick, overriding it's usual behavior.
 Does not apply to shooting galleries, or Mini-games where Link should not be able to move around.
 
-Also allows Link to control Epona while aiming with the bow.
+Also allows Link to control Epona while aiming with the bow, and optionally for the Bow and Hookshot to be fired with R.
 """
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
 # to prevent it from being cut off due to the limited space.
-short_description = "Allows Link to move with the analog while aiming in first-person."
+short_description = "Allows Link to move with the analog stick while aiming in first-person."
 
 
 # ID of the target recomp game.
