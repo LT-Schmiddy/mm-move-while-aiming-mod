@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0
+
+* Fixed an issue with Link not respecting analog movement in first person.
+* Greatly improved first-person collision code.
+
 ## 2.0.0
 
 * Link can now fire the Bow and Hookshot with R.
